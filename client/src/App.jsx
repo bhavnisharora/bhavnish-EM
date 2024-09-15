@@ -19,7 +19,7 @@ import TicketPage from "./pages/TicketPage";
 import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 
-axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "https://ksolves-hackathon.vercel.app/";
 axios.defaults.withCredentials = true;
 
 function App() {
