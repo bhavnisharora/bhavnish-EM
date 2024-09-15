@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
-import { BiLike } from "react-icons/bi";
+import { BiLike, BiTrash } from "react-icons/bi";
 
 export default function IndexPage() {
   const [events, setEvents] = useState([]);
@@ -17,6 +17,41 @@ export default function IndexPage() {
         console.error("Error fetching events:", error);
       });
   }, []);
+
+  // Check if event is liked using localStorage
+  const isEventLiked = (eventId) => {
+    const likedEvents = JSON.parse(localStorage.getItem("likedEvents")) || [];
+    return likedEvents.includes(eventId);
+  };
+
+  const handleLike = (eventId) => {
+    let likedEvents = JSON.parse(localStorage.getItem("likedEvents")) || [];
+    let isLiked = likedEvents.includes(eventId); // Check if the event is already liked
+
+    if (isLiked) {
+      likedEvents = likedEvents.filter((id) => id !== eventId); // Remove like
+    } else {
+      likedEvents.push(eventId); // Add like
+    }
+
+    localStorage.setItem("likedEvents", JSON.stringify(likedEvents));
+
+    setEvents(
+      events.map((event) =>
+        event._id === eventId
+          ? {
+              ...event,
+              likes:
+                !isLiked && event.likes >= 0
+                  ? event.likes + 1
+                  : event.likes > 0
+                  ? event.likes - 1
+                  : 0, // Ensure likes don't go below 0
+            }
+          : event
+      )
+    );
+  };
 
   return (
     <>
@@ -92,15 +127,20 @@ export default function IndexPage() {
                   >
                     <div className="rounded-tl-[0.75rem] rounded-tr-[0.75rem] rounded-br-[0] rounded-bl-[0] object-fill aspect-16:9">
                       <div className="absolute flex gap-4 bottom-[240px] right-8 md:bottom-[20px] md:right-3 lg:bottom-[250px] lg:right-4 sm:bottom-[260px] sm:right-3">
-                        <button>
-                          <BiLike className="w-auto h-12 lg:h-10 sm:h-12 md:h-10 bg-white p-2 rounded-full shadow-md transition-all hover:text-primary" />
+                        <button onClick={() => handleLike(event._id)}>
+                          <BiLike
+                            className={`w-auto h-12 lg:h-10 sm:h-12 md:h-10 bg-white p-2 rounded-full shadow-md transition-all ${
+                              isEventLiked(event._id) ? "text-primary" : ""
+                            }`}
+                          />
                         </button>
                       </div>
                     </div>
 
                     <img
                       src={`http://localhost:4000/${event.image}`}
-                      className="rounded-tl-[0.75rem] rounded-tr-[0.75rem] rounded-br-[0] rounded-bl-[0] object-fill aspect-16:9"
+                      className="rounded-tl-[0.75rem] rounded-tr-[0.75rem] rounded-br-[0] rounded-bl-[0] object-cover w-full h-[80px] lg:h-[150px]"
+                      alt="Event Logo"
                     />
 
                     <div className="m-2 grid gap-2">
@@ -109,7 +149,6 @@ export default function IndexPage() {
                           {event.title.toUpperCase()}
                         </h1>
                         <div className="flex gap-2 items-center mr-4 text-red-600">
-                          {" "}
                           <BiLike /> {event.likes}
                         </div>
                       </div>
@@ -134,7 +173,7 @@ export default function IndexPage() {
                           <span className="font-bold">{event.organizedBy}</span>
                         </div>
                         <div className="text-sm text-black ">
-                          Created By: <br />{" "}
+                          Created By: <br />
                           <span className="font-semibold">
                             {event.owner.toUpperCase()}
                           </span>
