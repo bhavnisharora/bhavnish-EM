@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -16,25 +17,22 @@ const app = express();
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "bsbsfbrnsftentwnnwnwn";
 
-app.use(
-  cors({
-    origin: ["https://ksolves-hackathon.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "client", "dist")));
+  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+});
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
     credentials: true,
-    origin: "https://ksolves-hackathon.vercel.app",
+    origin: "http://localhost:5173",
   })
 );
-
 mongoose.connect(process.env.MONGO_URL);
 
 const storage = multer.diskStorage({

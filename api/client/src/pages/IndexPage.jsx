@@ -138,7 +138,7 @@ export default function IndexPage() {
                     </div>
 
                     <img
-                      src={`http://localhost:4000/${event.image}`}
+                      src={`${window.location.origin}/${event.image}`}
                       className="rounded-tl-[0.75rem] rounded-tr-[0.75rem] rounded-br-[0] rounded-bl-[0] object-cover w-full h-[80px] lg:h-[150px]"
                       alt="Event Logo"
                     />

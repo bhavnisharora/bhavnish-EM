@@ -10,6 +10,7 @@
     "mongoos": "^0.0.1-security",
     "mongoose": "^7.6.1",
     "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
     "qr-image": "^3.2.0",
     "qrcode": "^1.5.3"
   }
