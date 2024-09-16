@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
-const path = require("path");
 
 const Ticket = require("./models/Ticket");
 
