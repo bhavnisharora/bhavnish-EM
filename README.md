@@ -1,6 +1,4 @@
-# ksolves - Event Management System
-
-Introducing our Event Management System, Our project, developed as part of the Ksolves Hackathon, it is designed for event planning and participation. The system allows users to schedule events, view upcoming events and calendars, get approval for events and book tickets etc. We are getting all the things in all in one platform :)
+# Event Management System
 
 **Skills:** _Figma · Ui/ux · React.js · MongoDB · Node.js · Express.js · Requirements Analysis · User Interface Design_
 
