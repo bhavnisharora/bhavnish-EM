@@ -59,7 +59,7 @@ export default function Header() {
       <header className="flex py-2 px-6 sm:px-6 justify-between place-items-center">
         <Link to={"/"} className="flex item-center ">
           <img
-            src="https://crm.consulting/uploads/ksolves-02.png"
+            src="https://iamcpindia.org/wp-content/uploads/2024/04/Hi-res-logo-1.png"
             alt="Company Logo"
             className="h-16 w-[120px] object-contain pr-2"
           />
@@ -115,7 +115,6 @@ export default function Header() {
         )}
 
         <Link to={"/createEvent"}>
-          {" "}
           {/*TODO:Route create event page after creating it */}
           <div className="hidden md:flex flex-col place-items-center py-1 px-2 rounded text-primary cursor-pointer hover:text-primarydark hover:bg-white hover:shadow-sm shadow-gray-200 hover:transition-shadow duration-1500">
             <button>
@@ -140,7 +139,6 @@ export default function Header() {
 
         <div className="hidden lg:flex gap-5 text-sm">
           <Link to={"/wallet"}>
-            {" "}
             {/*TODO:Route wallet page after creating it */}
             <div className="flex flex-col place-items-center py-1 px-3 rounded cursor-pointer hover:text-primarydark hover:bg-white hover:shadow-sm shadow-gray-200 hover:transition-shadow duration-1500">
               <svg
@@ -162,7 +160,6 @@ export default function Header() {
           </Link>
 
           <Link to={"/pricing"}>
-            {" "}
             {/*TODO:Route verification center page after creating it */}
             <div className="flex flex-col place-items-center py-1 px-3 rounded cursor-pointer hover:text-primarydark hover:bg-white hover:shadow-sm shadow-gray-200 hover:transition-shadow duration-1500">
               <svg
@@ -182,7 +179,6 @@ export default function Header() {
           </Link>
 
           <Link to={"/calendar"}>
-            {" "}
             {/*TODO:Route calendar page after creating it */}
             <div className="flex flex-col place-items-center py-1 px-3 rounded cursor-pointer hover:text-primarydark hover:bg-white hover:shadow-sm shadow-gray-200 hover:transition-shadow duration-1500">
               <svg
@@ -218,6 +214,7 @@ export default function Header() {
               />
             </svg>
           </div>
+          
         </div>
 
         {/* -------------------IF user is Logged DO this Main-------------------- */}

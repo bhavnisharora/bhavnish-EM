@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import { BiLike, BiTrash } from "react-icons/bi";
 
+
 export default function IndexPage() {
   const [events, setEvents] = useState([]);
-
   useEffect(() => {
     axios
       .get("/createEvent")

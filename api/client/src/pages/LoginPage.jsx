@@ -25,7 +25,7 @@ export default function LoginPage() {
     ev.preventDefault();
 
     try {
-      const { data } = await axios.post("/login", { email, password });
+      const { data } = await axios.post("http://localhost:4000/login", { email, password });
       setUser(data);
       alert("Login success");
 
@@ -155,8 +155,7 @@ export default function LoginPage() {
 
           <div className="w-full py-4">
             <button type="submit" className="primary w-full">
-              {" "}
-              Sign in{" "}
+              Sign in
             </button>
           </div>
 
@@ -167,7 +166,6 @@ export default function LoginPage() {
                   type="submit"
                   className="text-white cursor-pointer rounded w-full h-full bg-primary font-bold"
                 >
-                  {" "}
                   Sign In
                 </button>
               </Link>
@@ -178,7 +176,6 @@ export default function LoginPage() {
                   type="submit"
                   className="text-black cursor-pointer rounded w-full h-full font-bold"
                 >
-                  {" "}
                   Sign Up
                 </button>
               </Link>

@@ -16,10 +16,11 @@ import CalendarView from "./pages/CalendarView";
 import OrderSummary from "./pages/OrderSummary";
 import PaymentSummary from "./pages/PaymentSummary";
 import TicketPage from "./pages/TicketPage";
-import Pricing from "./pages/Pricing";
+import Pricing from "./pages/Pricing";  
 import Contact from "./pages/Contact";
 
-axios.defaults.baseURL = `${window.location.origin}`;
+// axios.defaults.baseURL = `${window.location.origin}`;
+axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
 
 function App() {

@@ -9,7 +9,7 @@ export default function Footer() {
               class="flex justify-center lg:justify-start"
             >
               <img
-                src="https://crm.consulting/uploads/ksolves-02.png"
+                src="https://iamcpindia.org/wp-content/uploads/2024/04/Hi-res-logo-1.png"
                 alt="Company Logo"
                 className="h-16 w-auto object-contain mx-auto"
               />

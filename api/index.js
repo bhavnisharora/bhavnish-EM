@@ -16,10 +16,7 @@ const app = express();
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "bsbsfbrnsftentwnnwnwn";
 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "dist")));
-  res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-});
+app.use(express.static(path.resolve(__dirname, "client", "dist")));
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -32,7 +29,11 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL).then(() =>{
+  console.log("mongodb connected")
+}).catch((err) => {
+  console.log(err);
+}) ;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
